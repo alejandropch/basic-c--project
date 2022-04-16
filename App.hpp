@@ -7,13 +7,13 @@ class App
 public:
   App()
   {
-
+    // this value is gonna be important if you create a question in time execution
     statements["choose"] = "Choose the correct option";
   };
 
   void setQuestion(int key, string statement, string question, vector<string> options, int answer)
   {
-    ofstream setMyFile("questions.txt", ios::app);
+    ofstream setMyFile("questions.en.txt", ios::app);
 
     // attempt to open the questions.txt
     if (setMyFile.is_open())
@@ -24,7 +24,7 @@ public:
       setMyFile << question << "\n";
       for (int i = 0; i < options.size(); i++)
       {
-        // writing the options, and separate them with the tab key
+        // writing the options, and separate them with the commas
         setMyFile << options[i] << ",";
       }
       // writing the answer
@@ -34,13 +34,14 @@ public:
     setMyFile.close();
   }
 
-  void start()
+  void start(string idiom)
   {
-    myfile.open("questions.txt");
+
+    idiom == "en" ? myfile.open("questions.en.txt") : myfile.open("questions.fr.txt");
 
     if (myfile.is_open())
     {
-      getNumberOfApp(myfile, totalApp);
+      getNumberOfApp(myfile, totalQuestions);
 
       return getQuestion(FIRST_QUESTION);
     }
@@ -102,30 +103,55 @@ public:
     return evaluate();
   }
 
+  void userScore()
+  {
+    cout << "The user score is:\n";
+    cout << "Total number of correct answers: " << getNumberCorrectAnswers() << endl;
+    cout << "Percentage of correct answers: " << fixed << setprecision(2) << getPercentageCorrectAnswers() << "%" << endl;
+
+    return;
+  }
+
   void evaluate()
   {
     int toEvaluate = -1;
 
     cout << "choose your answer: ";
     cin >> toEvaluate;
+    int nextQuestion = currentQuestion + 1;
     if (toEvaluate == answer)
     {
-      cout << "great job!\n\n\n";
-      int nextQuestion = currentQuestion + 1;
+      correct++;
+      cout << "great job!\n";
       // if all App all completed, program ends
-      if (nextQuestion > totalApp)
-      {
-        myfile.close();
-
-        return;
-      }
-
-      return getQuestion(nextQuestion);
     }
-    cout << "come on buddy:(\n";
-    return evaluate();
-  }
+    else
+    {
+      cout << "You commit an error:(\n";
+      cout << "The correct answer was: " << answer << "\n";
+    }
+    // this is just to separate questions between them
+    cout << "\n\n";
 
+    if (nextQuestion > totalQuestions)
+    {
+      // if all questions all completed, program ends
+
+      myfile.close();
+      return userScore();
+    }
+
+    return getQuestion(nextQuestion);
+  }
+  int getNumberCorrectAnswers()
+  {
+    return correct;
+  }
+  float getPercentageCorrectAnswers()
+  {
+
+    return ((double)correct / (double)totalQuestions) * 100;
+  }
   ~App(){};
 
 private:
@@ -133,5 +159,6 @@ private:
   int answer = -1;
   ifstream myfile;
   int currentQuestion = -1;
-  int totalApp = -1;
+  int totalQuestions = -1;
+  int correct = 0;
 };

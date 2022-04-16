@@ -1,0 +1,5 @@
+1. Choose the correct option
+How old is Sangeeta?
+seven,eleven,eight,
+answ)1
+
