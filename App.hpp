@@ -8,12 +8,18 @@ public:
   App()
   {
     // this value is gonna be important if you create a question in time execution
-    statements["choose"] = "Choose the correct option";
+    statements["choose"] = "Elije la respuesta correcta";
+
+    // this are all the paths for every tale
+    path[1] = "questionsdb/tale1";
+    path[2] = "questionsdb/tale2";
+    path[3] = "questionsdb/tale3";
   };
 
-  void setQuestion(int key, string statement, string question, vector<string> options, int answer)
+  void setQuestion(int key, string statement, string question, vector<string> options, int answer, string idiom)
   {
-    ofstream setMyFile("questions.en.txt", ios::app);
+    // you have to provide path
+    ofstream setMyFile(path[1] + "/questions.en.txt", ios::app);
 
     // attempt to open the questions.txt
     if (setMyFile.is_open())
@@ -34,10 +40,10 @@ public:
     setMyFile.close();
   }
 
-  void start(string idiom)
+  void start(string idiom, int tale)
   {
 
-    idiom == "en" ? myfile.open("questions.en.txt") : myfile.open("questions.fr.txt");
+    idiom == "en" ? myfile.open(path[tale] + "/questions.en.txt") : myfile.open(path[tale] + "/questions.fr.txt");
 
     if (myfile.is_open())
     {
@@ -156,6 +162,7 @@ public:
 
 private:
   map<string, string> statements;
+  map<int, string> path;
   int answer = -1;
   ifstream myfile;
   int currentQuestion = -1;

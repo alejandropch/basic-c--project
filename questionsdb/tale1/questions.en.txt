@@ -1,0 +1,20 @@
+1. Elije la respuesta correcta
+How old is Sangeeta?
+eleven,seven,eight,
+answ)2
+2. Elije la alternativa correcta
+Which country does she live in?
+India,Peru,USA
+answ)1
+3. Elije afirmativo o negativo
+Does she live with her parents? Who else lives with her?
+yes,no,
+answ)1
+4. Elije la respuesta correcta
+What does her older brother do?
+bar tender,doctor,programmer,
+answ)3
+5. Elije la respuesta correcta
+Where is he right now?
+Peru,India,Australia,
+answ)3

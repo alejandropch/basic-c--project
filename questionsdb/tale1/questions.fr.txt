@@ -1,0 +1,20 @@
+1. Elije la alternativa correcta
+Quel âge a Sangeeta ?
+sept, onze, huit,
+answ)1
+2. Elije la alternativa correcta
+Dans quel pays vit-elle ?
+Inde, Pérou, États-Unis
+answ)1
+3. Elije la respuesta correcta
+Vit-elle avec ses parents ? Qui d'autre vit avec elle ?
+Oui Non,
+answ)1
+4. Elije la respuesta correcta
+Que fait son grand frère ?
+barman, médecin, programmeur,
+answ)3
+5. Elije la respuesta correcta
+Où est-il en ce moment ?
+Pérou, Inde, Australie,
+answ)3

@@ -1,0 +1,20 @@
+1. Elije la alternativa correcta
+Qui se présente ?
+Mario,Jhon,Ana,
+answ)3
+2. Elije la alternativa correcta
+Quel âge a-t-elle?
+14 ans, 25 ans, 4 ans
+answ)2
+3. Elije afirmativo o negativo
+Où habite Ana ?
+Miami, Lima, Los Angeles
+answ)1
+4. Elije la respuesta correcta
+Quelle est la profession de son mari ?
+Avocat, médecin, mécanicien,
+answ)3
+5. Elije la respuesta correcta
+Où travaille-t-il le week-end ?
+il travaille dans un restaurant, il fait du jogging, il dort toute la journée,
+answ)3

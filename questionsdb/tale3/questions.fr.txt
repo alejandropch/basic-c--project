@@ -1,0 +1,20 @@
+1. Elije la respuesta correcta
+Que fait Jacob ?
+Il utilise une échelle, il nage, il dort,
+answ)1
+2. Elije la respuesta correcta
+Pourquoi Jacob propose-t-il de sauver le chat ?
+il déteste la haine, il veut attirer son attention, il veut de l'argent
+answ)2
+3. Elije la respuesta correcta
+Pourquoi tombe-t-il de l'échelle ?
+il a perdu confiance, il était fatigué, à cause du chat
+answ)3
+4. Elije la respuesta correcta
+Pensez-vous que Jacob est blessé à la fin ?
+Oui Non,
+answ)1
+5. Elije la respuesta correcta
+Pensez-vous qu'il a une chance de sortir avec Anita ?
+Oui Non
+answ)1

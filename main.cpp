@@ -11,9 +11,12 @@ int main()
   // vector<string> options;
   // options = {"apple", "lettuce", "pear"};
   // string statement = "Select the one is a vegetable";
-  // app.setQuestion(1,"choose", statement, options, answer);
+  // app.setQuestion(idiom,1,"choose", statement, options, answer);
 
   //  put "fr" to load the french questions, "en" for the english one
   string idiom = "en";
-  app.start(idiom);
+
+  int tale = 1;
+
+  app.start(idiom, tale);
 }

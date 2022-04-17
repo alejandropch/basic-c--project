@@ -1,0 +1,20 @@
+1. Elije la respuesta correcta
+Who is introducing herself?
+Mario,Jhon,Ana,
+answ)3
+2. Elije la alternativa correcta
+How old is she?
+14 years old,25 years old,4 years old
+answ)2
+3. Elije afirmativo o negativo
+Where does Ana live?
+Miami,Lima,Los Angeles
+answ)1
+4. Elije la respuesta correcta
+What is her husband’s profession?
+Lawyer,doctor,mechanic,
+answ)3
+5. Elije la respuesta correcta
+Where does he work on weekends?
+he works at a restaurant,he goes jogging,he sleeps all day,
+answ)3
