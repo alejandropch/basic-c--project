@@ -5,7 +5,7 @@
 #include <map>
 #include <regex>
 #include <sstream>
-#include<iomanip>
+#include <iomanip>
 
 using namespace std;
 
@@ -39,7 +39,7 @@ ifstream &getNumberOfApp(ifstream &myFile, int &totalApp)
   return myFile;
 }
 
-vector<string> split(const string &s, char delim)
+auto split = [](const string &s, char delim)
 {
   vector<string> result;
   stringstream ss(s);
@@ -51,4 +51,4 @@ vector<string> split(const string &s, char delim)
   }
 
   return result;
-}
+};

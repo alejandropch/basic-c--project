@@ -16,7 +16,7 @@ int main()
   //  put "fr" to load the french questions, "en" for the english one
   string idiom = "en";
 
+  // tale number you wanna read
   int tale = 1;
-
   app.start(idiom, tale);
 }
