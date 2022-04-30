@@ -1,7 +1,5 @@
 
 #include "utils.hpp"
-#define LINES_PER_QUESTION 4
-#define FIRST_QUESTION 1
 class App
 {
 public:
@@ -64,7 +62,7 @@ public:
     string line = "";
     regex optionsEx{","};
     regex answerEx{"answ."};
-    vector<string> options;
+    array<string, TOTAL_OPTIONS_SIZE> options;
     int i = 0;
     currentQuestion = questionWanted;
 
@@ -102,6 +100,10 @@ public:
 
     for (int i = 0; i < options.size(); i++)
     {
+
+      if (trim(options[i]) == "")
+        continue;
+
       cout << "\t" << i + 1 << ") " << options[i] << "\t";
     }
     cout << endl;
@@ -109,13 +111,17 @@ public:
     return evaluate();
   }
 
-  void userScore()
+  void savingQuestion()
   {
-    cout << "The user score is:\n";
-    cout << "Total number of correct answers: " << getNumberCorrectAnswers() << endl;
-    cout << "Percentage of correct answers: " << fixed << setprecision(2) << getPercentageCorrectAnswers() << "%" << endl;
+    for (int i = 0; i < questionsCorrect.size(); i++)
+    {
 
-    return;
+      if (questionsCorrect[i] == 0)
+      {
+        questionsCorrect[i] = currentQuestion;
+        return;
+      }
+    }
   }
 
   void evaluate()
@@ -129,6 +135,8 @@ public:
     {
       correct++;
       cout << "great job!\n";
+      // saving the question on the array
+      savingQuestion();
       // if all App all completed, program ends
     }
     else
@@ -149,15 +157,55 @@ public:
 
     return getQuestion(nextQuestion);
   }
+  void insertionSort()
+  {
+
+    int i, key, j;
+
+    for (i = 1; i < questionsCorrect.size(); i++)
+    {
+      key = questionsCorrect[i];
+      j = i - 1;
+      while (j >= 0 && questionsCorrect[j] > key)
+      {
+        questionsCorrect[j + 1] = questionsCorrect[j];
+        j = j - 1;
+      }
+      questionsCorrect[j + 1] = key;
+    }
+
+    return;
+  }
+  void userScore()
+  {
+    insertionSort();
+    cout << "The user score is:\n";
+    cout << "Total number of correct answers: " << getNumberCorrectAnswers() << endl;
+    cout << "Percentage of correct answers: " << fixed << setprecision(2) << getPercentageCorrectAnswers() << "%" << endl;
+    printCorrectAnswers();
+    return;
+  }
+
   int getNumberCorrectAnswers()
   {
     return correct;
   }
+
   float getPercentageCorrectAnswers()
   {
-
     return ((double)correct / (double)totalQuestions) * 100;
   }
+  void printCorrectAnswers()
+  {
+    cout << "Your correct answers was :" << endl;
+    for (int i = 0; i < questionsCorrect.size(); i++)
+    {
+      if (questionsCorrect[i] != 0)
+        cout << questionsCorrect[i] << ", ";
+    }
+    cout << endl;
+  }
+
   ~App(){};
 
 private:
@@ -165,6 +213,8 @@ private:
   map<int, string> path;
   int answer = -1;
   ifstream myfile;
+  array<int, 5> questionsCorrect = {0, 0, 0, 0, 0};
+
   int currentQuestion = -1;
   int totalQuestions = -1;
   int correct = 0;

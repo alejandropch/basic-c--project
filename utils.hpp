@@ -1,14 +1,25 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <vector>
 #include <map>
 #include <regex>
 #include <sstream>
 #include <iomanip>
 
+#define LINES_PER_QUESTION 4
+#define FIRST_QUESTION 1
+#define TOTAL_OPTIONS_SIZE 3
+
 using namespace std;
 
+
+template <typename T>
+static inline T &trim(T &s)
+{
+  s.erase(s.begin(), find_if(s.begin(), s.end(), [](int c)
+                             { return !isspace(c); }));
+  return s;
+}
 ifstream &goToQuestion(ifstream &myFile, unsigned int line)
 {
   myFile.seekg(ios::beg);
@@ -41,13 +52,14 @@ ifstream &getNumberOfApp(ifstream &myFile, int &totalApp)
 
 auto split = [](const string &s, char delim)
 {
-  vector<string> result;
+  array<string, TOTAL_OPTIONS_SIZE> result;
   stringstream ss(s);
   string item;
-
+  int i = 0;
   while (getline(ss, item, delim))
   {
-    result.push_back(item);
+    result[i] = item;
+    i++;
   }
 
   return result;
