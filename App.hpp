@@ -118,7 +118,27 @@ public:
 
       if (questionsCorrect[i] == 0)
       {
-        questionsCorrect[i] = currentQuestion;
+        switch (currentQuestion)
+        {
+        case 1:
+          questionsCorrect[i] = 35;
+          break;
+        case 2:
+          questionsCorrect[i] = 40;
+          break;
+        case 3:
+          questionsCorrect[i] = 72;
+          break;
+        case 4:
+          questionsCorrect[i] = 14;
+          break;
+        case 5:
+          questionsCorrect[i] = 9;
+          break;
+        default:
+          break;
+        }
+
         return;
       }
     }
@@ -176,13 +196,39 @@ public:
 
     return;
   }
+
   void userScore()
   {
+    auto sumCorrectAnswers = [&]()
+    {
+      int sum = 0;
+      for (int i = 0; i < questionsCorrect.size(); i++)
+      {
+        sum += questionsCorrect[i];
+      }
+      return sum;
+    }();
+
+    auto printCorrectAnswers = [&]()
+    {
+      for (int i = 0; i < questionsCorrect.size(); i++)
+      {
+        if (questionsCorrect[i] != 0)
+          cout << i << ") " << questionsCorrect[i] << ", ";
+      }
+
+      return;
+    };
+
     insertionSort();
     cout << "The user score is:\n";
     cout << "Total number of correct answers: " << getNumberCorrectAnswers() << endl;
     cout << "Percentage of correct answers: " << fixed << setprecision(2) << getPercentageCorrectAnswers() << "%" << endl;
+    cout << "Score per answer :" << endl;
     printCorrectAnswers();
+
+    cout << "\nPuntaje total: " << sumCorrectAnswers << endl;
+
     return;
   }
 
@@ -194,16 +240,6 @@ public:
   float getPercentageCorrectAnswers()
   {
     return ((double)correct / (double)totalQuestions) * 100;
-  }
-  void printCorrectAnswers()
-  {
-    cout << "Your correct answers was :" << endl;
-    for (int i = 0; i < questionsCorrect.size(); i++)
-    {
-      if (questionsCorrect[i] != 0)
-        cout << questionsCorrect[i] << ", ";
-    }
-    cout << endl;
   }
 
   ~App(){};

@@ -12,7 +12,6 @@
 
 using namespace std;
 
-
 template <typename T>
 static inline T &trim(T &s)
 {
