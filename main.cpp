@@ -1,22 +1,35 @@
+#include <iostream>
+#include <conio.h>
+#include "CMenu.hpp"
+#include "CMenu2.hpp"
 
-#include "App.hpp"
+int main(){
+    srand(time(0));
+    setlocale(LC_ALL, "es_ES");
+    /*CMenu* objMenu = new CMenu();
+	objMenu->empezarMenu();
+	delete objMenu;*/
 
-int main()
-{
-  App app;
+    Menu* objM=new Menu();
+    A:
+    objM->Navbar();
+	objM->Bienvenida();
+    objM->mostrar_frase();
 
-  // if you wanna add an additional question on compilation time, just uncomment this out
+    while (true) {
+		if (kbhit())
+		{
+			//Capturar la tecla presionada
+			char t = getch();
+			if (toupper(t) == 'R') { system("cls"); objM->Navbar();objM->Mostrar_levels();objM->Seleccionar_options();objM->Mostrar_cuento();}
+			if (toupper(t) == 'P') { system("cls"); goto A; }
+			//obj->Mostrar_menu_cuentos(toupper(t));
+			//flushall();
+		}
+		//_sleep(100);
+	}
+	system("pause");
+	delete objM;
 
-  // int answer = 2;
-  // vector<string> options;
-  // options = {"apple", "lettuce", "pear"};
-  // string statement = "Select the one is a vegetable";
-  // app.setQuestion(idiom,1,"choose", statement, options, answer);
-
-  //  put "fr" to load the french questions, "en" for the english one
-  string idiom = "en";
-
-  // tale number you wanna read
-  int tale = 1;
-  app.start(idiom, tale);
+    return 0;
 }
